@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/funciones.js"></script>
+<style>
+.grid-container {
+  display: grid;
+  position: absolute;
+  top: 50px; 
+  grid-template-columns: 100px 100px 100px 100px 100px;
+  /*background-color: #2196F3;*/
+  padding: 10px;
+}
+.grid-item {
+ /* background-color: rgba(255, 255, 255, 0.8);*/
+  /*border: 1px solid rgba(0, 0, 0, 0.8);*/
+  height: 100px;
+  background-image: url(img/ladrillo.jpg);
+  background-size: 300px 300px;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.boton{
+  width:60px;
+  height:60px;
+  background-color:#03800b;
+  margin: 5px;
+  padding:10px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  line-height:32px;
+  float:left;
+}
+.boton:hover{
+  opacity: 0.50;
+  -moz-opacity: .50;
+  filter:alpha (opacity=50);
+}
+.boton i{
+  color:#fff;
+  padding:5px 5px 5px 5px;
+}
+
+.botonSecundario{
+  width:45px;
+  height:45px;
+  background-color:#03800b;
+  margin: 5px;
+  padding:10px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  line-height:32px;
+  float:left;
+}
+.botonSecundario:hover{
+  opacity: 0.50;
+  -moz-opacity: .50;
+  filter:alpha (opacity=50);
+}
+.botonSecundario i{
+  color:#fff;
+  padding:5px 5px 5px 5px;
+}
+</style>
+</head>
+<body onload="inicio()">
+<!-- 
+<div id="frmMatriz"></div> -->
+<label># Filas: </label>
+<select id="category" style="margin-right: 12px" onchange="matriz(this.value)">
+  <option value=""></option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+</select> 
+ <input type="hidden" id="id" name="id" value="">
+ <input type="hidden" id="filas" name="filas" value="">
+ <input type="hidden" id="player" name="player" value="">
+ <input type="hidden" id="meta" name="meta" value="">
+
+<table> 
+<td>
+ <!--  <button id="editar" onclick="editar()" class="btn4"><i class="fa fa-bars"></i></button> -->
+
+  <div class="boton" id="btn1" onclick="botones()"><i class="fa fa-pen fa-2x"></i></div>
+  <div class="botonSecundario" id="btn2" onclick="play()"><i class="fa fa-play fa-x"></i></div>
+  <div class="botonSecundario" id="btn3" onclick="editar()"><i class="fa fa-cog fa-x"></i></div>
+
+</td>
+<td>
+  <div class="grid-container" id="grid"> 
+</div> 
+</td>
+</table>
+
+
+<div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Editar Laberinto</h4>
+        </div>
+        <div class="modal-body">
+         <label>Fondo: </label>
+          <select id="tipo" style="margin-right: 12px" onclick="fondo(this.value)">
+            <option value=""></option>
+            <option value="1">Jugador</option>
+            <option value="2">Meta</option>
+            <option value="3">Camino</option>
+            <option value="4">Bloque</option>
+          </select> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+
+
+
+</body>
+</html>
