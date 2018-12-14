@@ -122,17 +122,17 @@ function play(){ //inicia el recorrido del monigote :D
 }
 
 
-function resolveAfter2Seconds() {
+function resolveAfter1Seconds() {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve('resolved');
-    }, 2000);
+    }, 1000);
   });
 }
 
 async function asyncCall(a,z) { //funcion asincrona 
   //console.log('calling');
-  var result = await resolveAfter2Seconds();
+  var result = await resolveAfter1Seconds();
   movimiento(a[z]); //crea el movimiento del monigote
   if(z == a.length - 1){ //verifica que el contador i sea igual al tamaño del arreglo -1 para que el monigote llegue a la meta
   b = document.getElementById('meta').value;//asigno a b en que celda esta la meta
@@ -143,11 +143,11 @@ async function asyncCall(a,z) { //funcion asincrona
 function movimiento(a){
 	var p;
 	p = document.getElementById("player").value;
- 		sleep(1000);
 
 		document.getElementById(a).style.backgroundImage = "url('./img/monigote.jpg')";
 		document.getElementById(a).style.backgroundSize = "100px 120px"; 
 		document.getElementById(p).style.background ="white";
+ 		sleep(1000);
 		console.log(a);
 		document.getElementById('player').value = a;
 
