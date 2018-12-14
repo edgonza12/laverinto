@@ -112,39 +112,38 @@ function play(){ //inicia el recorrido del monigote :D
 			r++;
 			}
 	}
-	i = 0;
+	z = 0;
 
-	loop(i,a);
-
-}
-function loop(i,a){
-
-	b = document.getElementById('meta').value;//asigno a b en que celda esta la meta
-	if(i <= a.length - 1){
-		sleep(1000);
-		movimiento(a[i]); //crea el movimiento del monigote
-		if(i == a.length - 1){ //verifica que el contador i sea igual al tamaño del arreglo -1 para que el monigote llegue a la meta
-			win(b);
-		}
-		i++;
-		loop(i,a);
+	while(z <= a.length - 1){//recorro el array a 
+		asyncCall(a,z); //envio a la funcion asincrona el array y el contador z
+		z++;
 	}
 
-
-	// while(i <= a.length - 1) {
-	// 	sleep(1000);
-	// 	movimiento(a[i]); //crea el movimiento del monigote
-	// 	break;
-	// 	if(i == a.length - 1){ //verifica que el contador i sea igual al tamaño del arreglo -1 para que el monigote llegue a la meta
-	// 		win(b);
-	// 	}
-	// 	i++;
-	// }	
 }
+
+
+function resolveAfter2Seconds() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, 2000);
+  });
+}
+
+async function asyncCall(a,z) { //funcion asincrona 
+  //console.log('calling');
+  var result = await resolveAfter2Seconds();
+  movimiento(a[z]); //crea el movimiento del monigote
+  if(z == a.length - 1){ //verifica que el contador i sea igual al tamaño del arreglo -1 para que el monigote llegue a la meta
+  b = document.getElementById('meta').value;//asigno a b en que celda esta la meta
+	//win(b);
+  }
+}
+
 function movimiento(a){
 	var p;
 	p = document.getElementById("player").value;
- 		//sleep(1000);
+ 		sleep(1000);
 
 		document.getElementById(a).style.backgroundImage = "url('./img/monigote.jpg')";
 		document.getElementById(a).style.backgroundSize = "100px 120px"; 
@@ -161,9 +160,6 @@ function win(b){
 	document.getElementById(b).style.background ="url('./img/win.jpg')";
 	document.getElementById(b).style.backgroundSize = "100px 120px"; 
 	document.getElementById(p).style.background ="white";
-	// sleep(1000);
-	// document.getElementById(b).style.backgroundImage = "url('./img/meta.jpg')";
-	// document.getElementById(b).style.backgroundSize = "100px 120px"; 
 }
 
 function sleep(milliseconds) { //genera una pausa a la ejecucion del programa
